@@ -1,60 +1,145 @@
-class BSTNode {
+//==========================================
+// BST NODE
+//==========================================
 
-    constructor(product) {
+class BSTNode{
+
+    constructor(product){
 
         this.data = product;
+
         this.left = null;
+
         this.right = null;
 
     }
 
 }
 
-class BST {
+//==========================================
+// BST
+//==========================================
 
-    constructor() {
+class BST{
+
+    constructor(){
 
         this.root = null;
 
     }
 
-    insert(node, product) {
+    //--------------------------------------
+    // COMPARE PRODUCTS
+    //--------------------------------------
 
-        if (node === null) {
+    compareProducts(a,b){
+
+        //----------------------------------
+        // Category First
+        //----------------------------------
+
+        const catA = a.category.toLowerCase();
+
+        const catB = b.category.toLowerCase();
+
+        if(catA < catB)
+            return -1;
+
+        if(catA > catB)
+            return 1;
+
+        //----------------------------------
+        // Same Category
+        // Higher Rating First
+        //----------------------------------
+
+        if(a.rating > b.rating)
+            return -1;
+
+        if(a.rating < b.rating)
+            return 1;
+
+        //----------------------------------
+        // Same Rating
+        //----------------------------------
+
+        return a.id - b.id;
+
+    }
+
+    //--------------------------------------
+    // INSERT
+    //--------------------------------------
+
+    insert(node,product){
+
+        if(node==null)
 
             return new BSTNode(product);
 
-        }
+        const compare = this.compareProducts(
 
-        if (product.id < node.data.id) {
+            product,
 
-            node.left = this.insert(node.left, product);
+            node.data
 
-        }
+        );
 
-        else {
+        if(compare<0)
 
-            node.right = this.insert(node.right, product);
+            node.left=
 
-        }
+            this.insert(
+
+                node.left,
+
+                product
+
+            );
+
+        else
+
+            node.right=
+
+            this.insert(
+
+                node.right,
+
+                product
+
+            );
 
         return node;
 
     }
 
-    insertProduct(product) {
+    //--------------------------------------
+    // INSERT PRODUCT
+    //--------------------------------------
 
-        this.root = this.insert(this.root, product);
+    insertProduct(product){
+
+        this.root=
+
+        this.insert(
+
+            this.root,
+
+            product
+
+        );
 
     }
 
-    inorder(node) {
+    //--------------------------------------
+    // DISPLAY
+    //--------------------------------------
 
-        if (node === null) {
+    inorder(node){
+
+        if(node==null)
 
             return;
-
-        }
 
         this.inorder(node.left);
 
@@ -62,35 +147,187 @@ class BST {
 
         this.inorder(node.right);
 
+        this.inorder(node.right);
+
     }
 
-    displayProducts() {
+    displayProducts(){
 
         this.inorder(this.root);
 
     }
 
-    search(node, id) {
+    //--------------------------------------
+    // SEARCH BY CATEGORY + RATING
+    //--------------------------------------
 
-        if (node === null)
+    search(node,category,minRating,result){
 
-            return null;
+        if(node==null)
 
-        if (node.data.id === id)
+            return;
 
-            return node;
+        this.search(
 
-        if (id < node.data.id)
+            node.left,
 
-            return this.search(node.left, id);
+            category,
 
-        return this.search(node.right, id);
+            minRating,
+
+            result
+
+        );
+
+        const product=node.data;
+
+        if(
+
+            product.category.toLowerCase()===
+
+            category.toLowerCase()
+
+            &&
+
+            product.rating>=minRating
+
+        ){
+
+            result.push(product);
+
+        }
+
+        this.search(
+
+            node.right,
+
+            category,
+
+            minRating,
+
+            result
+
+        );
 
     }
 
-    searchProduct(id) {
+    //--------------------------------------
+    // PUBLIC SEARCH
+    //--------------------------------------
 
-        return this.search(this.root, id);
+    searchProducts(
+
+        category,
+
+        minRating
+
+    ){
+
+        const result=[];
+
+        this.search(
+
+            this.root,
+
+            category,
+
+            minRating,
+
+            result
+
+        );
+
+        return result;
+
+    }
+
+    //--------------------------------------
+    // RANGE QUERY
+    //--------------------------------------
+
+    rangeQuery(
+
+        node,
+
+        minRating,
+
+        maxRating,
+
+        result
+
+    ){
+
+        if(node==null)
+
+            return;
+
+        this.rangeQuery(
+
+            node.left,
+
+            minRating,
+
+            maxRating,
+
+            result
+
+        );
+
+        if(
+
+            node.data.rating>=minRating
+
+            &&
+
+            node.data.rating<=maxRating
+
+        ){
+
+            result.push(node.data);
+
+        }
+
+        this.rangeQuery(
+
+            node.right,
+
+            minRating,
+
+            maxRating,
+
+            result
+
+        );
+
+    }
+
+    //--------------------------------------
+    // GET PRODUCTS IN RATING RANGE
+    //--------------------------------------
+
+    getProductsInRange(
+
+        minRating,
+
+        maxRating
+
+    ){
+
+        const result=[];
+
+        this.rangeQuery(
+
+            this.root,
+
+            minRating,
+
+            maxRating,
+
+            result
+
+        );
+
+        return result;
 
     }
 

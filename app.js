@@ -498,53 +498,94 @@ console.log([...graph.productToUsers.entries()]);
 
 
 
+//=========================================
+// SEARCH PRODUCT (CATEGORY + RATING)
+//=========================================
+
 function searchProduct(){
 
-    const input = document.getElementById("searchInput");
+    const category =
+    document.getElementById("categoryInput")
+    .value
+    .trim();
 
-    if(!input) return;
+    const rating =
+    parseFloat(
+        document.getElementById("ratingInput").value
+    );
 
-    const id = parseInt(input.value);
+    const container =
+    document.getElementById("productContainer");
 
-    const container = document.getElementById("productContainer");
+    if(!container)
+        return;
 
     container.innerHTML = "";
 
-    const node = tree.searchProduct(id);
+    //-----------------------------------
 
-    if(node === null){
+    if(category===""){
 
-        container.innerHTML = "<h2>No Product Found</h2>";
+        alert("Enter Category");
 
         return;
+
     }
 
-    const product = node.data;
+    //-----------------------------------
 
-    container.innerHTML = `
+    const result =
+    tree.searchProducts(
+
+        category,
+
+        isNaN(rating) ? 0 : rating
+
+    );
+
+    //-----------------------------------
+
+    if(result.length===0){
+
+        container.innerHTML=
+
+        "<h2>No Product Found</h2>";
+
+        return;
+
+    }
+
+    //-----------------------------------
+
+    result.forEach(product=>{
+
+        container.innerHTML+=`
+
         <div class="product-card">
 
             <h2>${product.name}</h2>
 
-            <p>ID : ${product.id}</p>
+            <p><strong>ID :</strong> ${product.id}</p>
 
-            <p>Category : ${product.category}</p>
+            <p><strong>Category :</strong> ${product.category}</p>
 
             <p>⭐ ${product.rating}</p>
 
             <button
-                class="buyBtn"
-                onclick="buyProduct(${product.id})">
+            class="buyBtn"
+            onclick="buyProduct(${product.id})">
 
-                Buy Product
+            Buy Product
 
             </button>
 
         </div>
-    `;
+
+        `;
+
+    });
 
 }
-
 function addNewProduct(){
 
     const id = parseInt(document.getElementById("productId").value);

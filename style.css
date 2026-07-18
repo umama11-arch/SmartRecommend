@@ -493,7 +493,7 @@ footer{
 
     padding:50px 20px;
 
-    background:linear-gradient(135deg,#2563EB,#60A5FA);
+    background:var(--background);
 
 }
 
