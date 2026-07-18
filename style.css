@@ -1,0 +1,1997 @@
+/* =========================================
+   GOOGLE FONT
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================================
+   ROOT VARIABLES
+========================================= */
+
+:root{
+
+    --primary:#F8B4A8;      /* Peach */
+    --primary-dark:#E99689; /* Dark Peach */
+    --secondary:#FDEAE7;    /* Light Peach */
+    --background:#FFF9F8;   /* Soft Background */
+    --card:#FFFFFF;
+    --text:#5A4A4A;
+    --text-light:#8C7B7B;
+    --border:#F4D6D2;
+    --shadow:0 10px 25px rgba(233,150,137,0.15);
+
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+
+    width:100%;
+
+    background:var(--white);
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 8%;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+.logo i{
+
+    margin-right:8px;
+
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+nav{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+nav a{
+
+    font-weight:500;
+
+    transition:var(--transition);
+
+    position:relative;
+
+}
+
+
+nav a:hover{
+
+    color:var(--primary);
+
+}
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-5px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:.4s;
+
+}
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero{
+
+    min-height:90vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:80px 10%;
+
+}
+
+
+.hero-content{
+
+    max-width:850px;
+
+}
+
+
+.hero h1{
+
+    font-size:55px;
+
+    margin-bottom:25px;
+
+    line-height:1.2;
+
+}
+
+
+.hero p{
+
+    color:var(--light-text);
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:45px;
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.btn{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:15px 40px;
+
+    border-radius:40px;
+
+    transition:var(--transition);
+
+    font-weight:600;
+
+}
+
+
+.btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-3px);
+
+}
+
+
+.btn-outline{
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+    padding:15px 40px;
+
+    border-radius:40px;
+
+    transition:var(--transition);
+
+    font-weight:600;
+
+}
+
+
+.btn-outline:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+    padding:60px 0;
+
+}
+
+
+.card{
+
+    background:white;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+
+.card i{
+
+    font-size:55px;
+
+    color:var(--primary);
+
+    margin-bottom:25px;
+
+}
+
+
+.card h3{
+
+    margin-bottom:15px;
+
+}
+
+
+.card p{
+
+    color:var(--light-text);
+
+    line-height:1.8;
+
+}
+
+
+/* =========================================
+   COMMON BUTTON
+========================================= */
+
+button{
+
+    background:linear-gradient(
+    135deg,
+    #F8B4A8,
+    #F6C7BE);
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:13px 26px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:linear-gradient(
+    135deg,
+    #E99689,
+    #F4B7AB);
+
+    transform:translateY(-3px);
+
+}
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+section h1{
+
+    font-size:40px;
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+}
+
+
+section>p{
+
+    text-align:center;
+
+    color:var(--light-text);
+
+    margin-bottom:40px;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    margin-top:80px;
+
+    background:white;
+
+    color:var(--light-text);
+
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#e5e7eb;
+
+}
+
+/*=========================================
+        LOGIN & REGISTER PAGE
+==========================================*/
+
+.form-container{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:50px 20px;
+
+    background:linear-gradient(135deg,#2563EB,#60A5FA);
+
+}
+
+
+.form{
+
+    width:100%;
+    max-width:430px;
+
+    background:#fff;
+
+    padding:45px 40px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+    animation:fadeIn .8s ease;
+
+}
+
+
+.form h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    color:var(--primary);
+
+    font-size:32px;
+
+}
+
+
+.form input{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    transition:.3s;
+
+    outline:none;
+
+}
+
+
+.form input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 10px rgba(37,99,235,.2);
+
+}
+
+
+.form button{
+
+    width:100%;
+
+    padding:16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+.form button:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+
+.form p{
+
+    text-align:center;
+
+    margin-top:22px;
+
+    color:var(--light-text);
+
+}
+
+
+.form p a{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+
+.form p a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/*=========================================
+        INPUT PLACEHOLDER
+==========================================*/
+
+.form input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+
+/*=========================================
+        FORM ICON (Future Use)
+==========================================*/
+
+.input-group{
+
+    position:relative;
+
+}
+
+
+.input-group i{
+
+    position:absolute;
+
+    right:18px;
+
+    top:18px;
+
+    color:gray;
+
+}
+
+
+/*=========================================
+        FADE ANIMATION
+==========================================*/
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/*=========================================
+        MOBILE
+==========================================*/
+
+@media(max-width:500px){
+
+.form{
+
+    padding:35px 25px;
+
+}
+
+.form h2{
+
+    font-size:28px;
+
+}
+
+}
+
+/*=========================================
+            DASHBOARD
+==========================================*/
+
+.dashboard{
+
+    width:90%;
+    margin:50px auto;
+
+}
+
+
+.dashboard h1{
+
+    text-align:left;
+    margin-bottom:10px;
+
+}
+
+
+.dashboard>p{
+
+    text-align:left;
+    margin-bottom:40px;
+
+    color:var(--light-text);
+
+}
+
+
+/*=========================================
+        DASHBOARD CARDS
+==========================================*/
+
+.dashboard-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+
+.dash-card{
+
+    background:var(--white);
+
+    padding:35px;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    cursor:pointer;
+
+    text-align:center;
+
+}
+
+
+.dash-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+.dash-card i{
+
+    font-size:45px;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+
+.dash-card h2{
+
+    font-size:38px;
+
+    margin-bottom:10px;
+
+}
+
+
+.dash-card p{
+
+    color:var(--light-text);
+
+    font-size:17px;
+
+}
+
+
+/*=========================================
+        QUICK ACTION
+==========================================*/
+
+.quick-actions{
+
+    margin-top:70px;
+
+}
+
+
+.quick-actions h2{
+
+    margin-bottom:25px;
+
+}
+
+
+.action-buttons{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+
+.action-buttons button{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+.action-buttons button:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-3px);
+
+}
+
+
+/*=========================================
+        STATISTICS BOX
+==========================================*/
+
+.statistics{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:25px;
+
+    margin-top:60px;
+
+}
+
+
+.stats-box{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+.stats-box h3{
+
+    margin-bottom:18px;
+
+}
+
+
+.progress{
+
+    width:100%;
+
+    height:12px;
+
+    background:#E5E7EB;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-top:10px;
+
+}
+
+
+.progress div{
+
+    width:75%;
+
+    height:100%;
+
+    background:var(--secondary);
+
+}
+
+
+/*=========================================
+        USER INFO CARD
+==========================================*/
+
+.user-card{
+
+    margin-top:60px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+}
+
+
+.user-details h2{
+
+    margin-bottom:10px;
+
+}
+
+
+.user-details p{
+
+    color:var(--light-text);
+
+}
+
+
+.logout-btn{
+
+    background:var(--danger);
+
+    color:white;
+
+    padding:15px 35px;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+}
+
+
+.logout-btn:hover{
+
+    opacity:.9;
+
+}
+
+
+/*=========================================
+        MOBILE
+==========================================*/
+
+@media(max-width:768px){
+
+.dashboard{
+
+    width:95%;
+
+}
+
+.user-card{
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+}
+
+}
+
+
+/* ======================================
+   PRODUCTS PAGE
+====================================== */
+
+/*=========================================
+            PRODUCTS PAGE
+=========================================*/
+
+.products-section{
+    width:90%;
+    max-width:1400px;
+    margin:50px auto;
+}
+
+/* Heading */
+
+.products-section h1{
+    text-align:center;
+    font-size:2.6rem;
+    color:var(--text);
+    margin-bottom:10px;
+}
+
+.products-section > p{
+    text-align:center;
+    color:var(--text-light);
+    margin-bottom:40px;
+    font-size:17px;
+}
+
+/*=========================================
+            SEARCH BAR
+=========================================*/
+
+.search-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:45px;
+}
+
+.search-box input{
+    width:420px;
+    padding:15px 18px;
+    border:2px solid var(--border);
+    border-radius:14px;
+    background:var(--card);
+    color:var(--text);
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.search-box input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(248,180,168,.18);
+
+}
+
+.search-box button{
+
+    padding:15px 28px;
+
+}
+
+/*=========================================
+        MAIN LAYOUT
+=========================================*/
+
+.products-layout{
+
+    display:grid;
+
+    grid-template-columns:2.2fr 1fr;
+
+    gap:35px;
+
+    align-items:start;
+
+}
+
+/*=========================================
+        PRODUCT GRID
+=========================================*/
+
+#productContainer{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(260px,1fr));
+
+    gap:25px;
+
+}
+
+/*=========================================
+        PRODUCT CARD
+=========================================*/
+
+.product-card{
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:25px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    text-align:center;
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.product-card h2{
+
+    color:var(--text);
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+}
+
+.product-card p{
+
+    color:var(--text-light);
+
+    margin:10px 0;
+
+    font-size:15px;
+
+}
+
+.product-card strong{
+
+    color:var(--text);
+
+}
+
+.buyBtn{
+
+    width:100%;
+
+    margin-top:18px;
+
+    padding:14px;
+
+}
+
+/*=========================================
+        ADD PRODUCT CARD
+=========================================*/
+
+.add-product{
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:30px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    position:sticky;
+
+    top:110px;
+
+}
+
+.add-product h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:var(--text);
+
+}
+
+.add-product input{
+
+    width:100%;
+
+    margin-bottom:16px;
+
+    padding:14px;
+
+    border:2px solid var(--border);
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    transition:.3s;
+
+}
+
+.add-product input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(248,180,168,.18);
+
+}
+
+.add-product button{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:15px;
+
+}
+
+/*=========================================
+        EMPTY MESSAGE
+=========================================*/
+
+.no-products{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:50px;
+
+    color:var(--text-light);
+
+}
+
+/*=========================================
+        RESPONSIVE
+=========================================*/
+
+@media(max-width:1000px){
+
+.products-layout{
+
+grid-template-columns:1fr;
+
+}
+
+.add-product{
+
+position:static;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.search-box{
+
+flex-direction:column;
+
+}
+
+.search-box input{
+
+width:100%;
+
+}
+
+.search-box button{
+
+width:100%;
+
+}
+
+.products-section{
+
+width:95%;
+
+}
+
+}
+
+
+
+/*=========================================
+        ADD PRODUCT MODAL
+=========================================*/
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(6px);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.modal-content{
+
+    width:430px;
+
+    background:var(--card);
+
+    border-radius:24px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+    border:1px solid var(--border);
+
+    animation:popup .35s ease;
+
+}
+
+.modal-content h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:var(--text);
+
+}
+
+.modal-content input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border:2px solid var(--border);
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    transition:.3s;
+
+}
+
+.modal-content input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(248,180,168,.2);
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:15px;
+
+}
+
+.modal-buttons button{
+
+    flex:1;
+
+}
+
+.closeBtn{
+
+    background:transparent;
+
+    color:var(--text);
+
+    border:2px solid var(--border);
+
+}
+
+.closeBtn:hover{
+
+    background:var(--secondary);
+
+}
+
+.openModalBtn{
+
+    display:block;
+
+    margin:40px auto;
+
+    padding:15px 35px;
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+/*=========================================
+        RECOMMENDATION PAGE
+=========================================*/
+
+/*=========================================
+        RECOMMENDATION PAGE
+=========================================*/
+
+.recommendation-page{
+    width:90%;
+    max-width:1200px;
+    margin:50px auto;
+}
+
+.recommendation-page h1{
+    text-align:center;
+    color:var(--primary-dark);
+    font-size:2.5rem;
+    margin-bottom:12px;
+}
+
+.recommendation-page>p{
+    text-align:center;
+    color:var(--text-light);
+    max-width:700px;
+    margin:0 auto 40px;
+    line-height:1.7;
+}
+
+/*=========================================
+        GENERATE BUTTON
+=========================================*/
+
+#generateBtn{
+
+    display:block;
+
+    margin:0 auto 45px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:var(--shadow);
+
+}
+
+#generateBtn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+#generateBtn:active{
+
+    transform:scale(.98);
+
+}
+
+/*=========================================
+        CONTAINER
+=========================================*/
+
+#recommendationContainer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:28px;
+
+}
+
+/*=========================================
+        CACHE / FRESH TITLE
+=========================================*/
+
+#recommendationContainer h2{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    color:var(--primary-dark);
+
+    margin-bottom:10px;
+
+    font-size:28px;
+
+}
+
+/*=========================================
+        CARD
+=========================================*/
+
+.recommend-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.recommend-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/* Decorative Circle */
+
+.recommend-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    background:var(--secondary);
+
+    top:-45px;
+
+    right:-45px;
+
+}
+
+/* Badge */
+
+.recommend-card::after{
+
+    content:"⭐ Recommended";
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/*=========================================
+        PRODUCT NAME
+=========================================*/
+
+.recommend-card h3{
+
+    color:var(--primary-dark);
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/*=========================================
+        DETAILS
+=========================================*/
+
+.recommend-card p{
+
+    color:var(--text);
+
+    margin-bottom:12px;
+
+    line-height:1.6;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/*=========================================
+        EMPTY MESSAGE
+=========================================*/
+
+.noRecommendation{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:50px;
+
+    background:var(--card);
+
+    border:2px dashed var(--border);
+
+    border-radius:20px;
+
+    color:var(--text-light);
+
+    box-shadow:var(--shadow);
+
+}
+
+/*=========================================
+        RESPONSIVE
+=========================================*/
+
+@media(max-width:768px){
+
+    .recommendation-page{
+
+        width:95%;
+
+    }
+
+    #recommendationContainer{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #generateBtn{
+
+        width:100%;
+
+    }
+
+}
+
+/*=========================================
+            LRU CACHE PAGE
+=========================================*/
+
+/*=========================================
+            CACHE PAGE
+=========================================*/
+
+.cache-page{
+    width:90%;
+    max-width:1200px;
+    margin:50px auto;
+}
+
+.cache-page h1{
+    text-align:center;
+    color:var(--primary-dark);
+    font-size:2.4rem;
+    margin-bottom:12px;
+}
+
+.cache-page>p{
+    text-align:center;
+    color:var(--text-light);
+    margin-bottom:45px;
+    font-size:16px;
+}
+
+/*=========================================
+        CACHE CONTAINER
+=========================================*/
+
+#cacheContainer{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:28px;
+
+}
+
+/*=========================================
+            CACHE CARD
+=========================================*/
+
+.cache-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.cache-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/* Decorative Circle */
+
+.cache-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+
+    height:120px;
+
+    background:var(--secondary);
+
+    border-radius:50%;
+
+    top:-40px;
+
+    right:-40px;
+
+}
+
+/*=========================================
+            USER TITLE
+=========================================*/
+
+.cache-card h2{
+
+    color:var(--primary-dark);
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/*=========================================
+            SUBTITLE
+=========================================*/
+
+.cache-card p{
+
+    color:var(--text);
+
+    font-weight:600;
+
+    margin-bottom:15px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/*=========================================
+            PRODUCT LIST
+=========================================*/
+
+.cache-card ul{
+
+    list-style:none;
+
+    margin-top:10px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.cache-card li{
+
+    background:var(--secondary);
+
+    color:var(--text);
+
+    padding:12px 15px;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.cache-card li::before{
+
+    content:"🛍️";
+
+}
+
+.cache-card li:hover{
+
+    transform:translateX(6px);
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/*=========================================
+        EMPTY CACHE
+=========================================*/
+
+#cacheContainer h2{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    background:var(--card);
+
+    padding:45px;
+
+    border-radius:22px;
+
+    border:2px dashed var(--border);
+
+    color:var(--text-light);
+
+    box-shadow:var(--shadow);
+
+}
+
+/*=========================================
+        CACHE BADGE
+=========================================*/
+
+.cache-card::after{
+
+    content:"⚡ LRU";
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/*=========================================
+            RESPONSIVE
+=========================================*/
+
+@media(max-width:768px){
+
+    .cache-page{
+
+        width:95%;
+
+    }
+
+    #cacheContainer{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .cache-section{
+        width:95%;
+    }
+
+    #cacheContainer{
+        grid-template-columns:1fr;
+    }
+
+}

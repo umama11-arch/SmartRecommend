@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Smart Recommendation
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="products.html">Products</a>
+
+            <a href="recommendation.html">Recommendation</a>
+
+            <a href="cache.html">LRU Cache</a>
+
+            <a href="search.html">Search</a>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products-section">
+
+        <h1>Products</h1>
+
+        <p>Browse all available products.</p>
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search Product by ID">
+
+            <button onclick="searchProduct()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Search
+
+            </button>
+
+        </div>
+
+        <!-- Layout -->
+
+        <div class="products-layout">
+
+            <!-- Product Cards -->
+
+            <div id="productContainer"></div>
+
+            <!-- Add Product -->
+
+           <button class="openModalBtn" onclick="openModal()">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Product
+
+</button>
+
+<div class="modal" id="productModal">
+
+<div class="modal-content">
+
+<h2>Add New Product</h2>
+
+<input type="number" id="productId" placeholder="Product ID">
+
+<input type="text" id="productName" placeholder="Product Name">
+
+<input type="text" id="productCategory" placeholder="Category">
+
+<input type="number" step="0.1"
+id="productRating"
+placeholder="Rating">
+
+<div class="modal-buttons">
+
+<button onclick="addNewProduct()">
+
+Add Product
+
+</button>
+
+<button
+class="closeBtn"
+onclick="closeModal()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+               
+
+            </div>
+
+
+    </section>
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <script src="product.js"></script>
+
+    <script src="user.js"></script>
+
+    <script src="graph.js"></script>
+
+    <script src="bst.js"></script>
+
+    <script src="minheap.js"></script>
+
+    <script src="LRUcache.js"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

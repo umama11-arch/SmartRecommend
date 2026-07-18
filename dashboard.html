@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+SmartRecommend
+
+</div>
+
+<nav>
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="products.html">Products</a>
+
+<a href="recommendation.html">Recommendations</a>
+
+<a href="cache.html">LRU Cache</a>
+
+<a href="search.html">Search</a>
+
+<a href="index.html">Logout</a>
+
+</nav>
+
+</header>
+
+
+<section class="dashboard">
+
+<h1 id="welcomeUser">
+
+Welcome 👋
+
+</h1>
+
+<p>
+
+Manage products and recommendations.
+
+</p>
+
+
+<div class="dashboard-cards">
+
+<div class="dash-card">
+
+<i class="fa-solid fa-box"></i>
+
+<h2 id="totalProducts">
+
+0
+
+</h2>
+
+<p>Products</p>
+
+</div>
+
+
+
+<div class="dash-card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2 id="totalUsers">
+
+0
+
+</h2>
+
+<p>Users</p>
+
+</div>
+
+
+
+<div class="dash-card">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<h2 id="purchaseCount">
+
+0
+
+</h2>
+
+<p>Purchases</p>
+
+</div>
+
+
+
+<div class="dash-card">
+
+<i class="fa-solid fa-memory"></i>
+
+<h2 id="cacheSize">
+
+0</h2>
+
+<p>Cache Size</p>
+
+</div>
+
+</div>
+
+
+<div class="quick-actions">
+
+<h2>Quick Actions</h2>
+
+<div class="action-buttons">
+
+<button id="viewProductsBtn">
+
+View Products
+
+</button>
+
+<button id="recommendBtn">
+
+Recommendations
+
+</button>
+
+<button id="searchBtn">
+
+Search Product
+
+</button>
+
+<button id="cacheBtn">
+
+View Cache
+
+</button>
+
+<button id="logoutBtn">
+
+Logout
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="product.js"></script>
+<script src="user.js"></script>
+<script src="graph.js"></script>
+<script src="bst.js"></script>
+<script src="minheap.js"></script>
+<script src="LRUcache.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>
