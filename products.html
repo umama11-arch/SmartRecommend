@@ -10,8 +10,7 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet"
@@ -39,10 +38,12 @@
 
             <a href="products.html">Products</a>
 
-            <a href="recommendation.html">Recommendation</a>
+            <a href="recommendation.html">Recommendations</a>
 
             <a href="cache.html">LRU Cache</a>
 
+
+            <a href="index.html">Logout</a>
 
         </nav>
 
@@ -54,94 +55,173 @@
 
         <h1>Products</h1>
 
-        <p>Browse all available products.</p>
+        <p>
 
-        <!-- Search -->
+            Browse, search and manage all available products.
 
-        <div class="search-box">
-<input
-type="text"
-id="categoryInput"
-placeholder="Category">
+        </p>
 
-<input
-type="number"
-step="0.1"
-id="ratingInput"
-placeholder="Minimum Rating">
+        <!-- ================= TOP BAR ================= -->
 
+        <div class="top-bar">
 
-            <button onclick="searchProduct()">
+            <div class="search-box">
 
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="number"
+                    id="searchInput"
+                    placeholder="Search Product by ID">
 
-                Search
+                <button onclick="searchProduct()">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Search
+
+                </button>
+
+            </div>
+
+            <button
+                class="openModalBtn"
+                onclick="openModal()">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Product
 
             </button>
 
         </div>
 
-        <!-- Layout -->
+        <!-- ================= FILTER ================= -->
 
-        <div class="products-layout">
+        <div class="filter-box">
 
-            <!-- Product Cards -->
+            <select id="categoryFilter">
 
-            <div id="productContainer"></div>
+                <option value="">
 
-            <!-- Add Product -->
+                    All Categories
 
-           <button class="openModalBtn" onclick="openModal()">
+                </option>
 
-<i class="fa-solid fa-plus"></i>
+                <option value="Electronics">
 
-Add Product
+                    Electronics
 
-</button>
+                </option>
 
-<div class="modal" id="productModal">
+                <option value="Accessories">
 
-<div class="modal-content">
+                    Accessories
 
-<h2>Add New Product</h2>
+                </option>
 
-<input type="number" id="productId" placeholder="Product ID">
+            </select>
 
-<input type="text" id="productName" placeholder="Product Name">
+            <select id="ratingFilter">
 
-<input type="text" id="productCategory" placeholder="Category">
+                <option value="0">
 
-<input type="number" step="0.1"
-id="productRating"
-placeholder="Rating">
+                    All Ratings
 
-<div class="modal-buttons">
+                </option>
 
-<button onclick="addNewProduct()">
+                <option value="4">
 
-Add Product
+                    4.0+
 
-</button>
+                </option>
 
-<button
-class="closeBtn"
-onclick="closeModal()">
+                <option value="4.5">
 
-Cancel
+                    4.5+
 
-</button>
+                </option>
 
-</div>
+                <option value="4.8">
 
-</div>
+                    4.8+
 
-</div>
-               
+                </option>
+
+            </select>
+
+            <button onclick="filterProducts()">
+
+                Apply Filter
+
+            </button>
+
+        </div>
+
+        <!-- ================= PRODUCTS GRID ================= -->
+
+        <div
+            id="productContainer"
+            class="product-container">
+
+        </div>
+
+    </section>
+
+    <!-- ================= ADD PRODUCT MODAL ================= -->
+
+    <div
+        class="modal"
+        id="productModal">
+
+        <div class="modal-content">
+
+            <h2>
+
+                Add New Product
+
+            </h2>
+
+            <input
+                type="number"
+                id="productId"
+                placeholder="Product ID">
+
+            <input
+                type="text"
+                id="productName"
+                placeholder="Product Name">
+
+            <input
+                type="text"
+                id="productCategory"
+                placeholder="Category">
+
+            <input
+                type="number"
+                step="0.1"
+                id="productRating"
+                placeholder="Rating">
+
+            <div class="modal-buttons">
+
+                <button onclick="addNewProduct()">
+
+                    Add Product
+
+                </button>
+
+                <button
+                    class="closeBtn"
+                    onclick="closeModal()">
+
+                    Cancel
+
+                </button>
 
             </div>
 
+        </div>
 
-    </section>
+    </div>
 
     <!-- ================= SCRIPTS ================= -->
 

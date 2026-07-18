@@ -501,89 +501,49 @@ console.log([...graph.productToUsers.entries()]);
 //=========================================
 // SEARCH PRODUCT (CATEGORY + RATING)
 //=========================================
-
 function searchProduct(){
 
-    const category =
-    document.getElementById("categoryInput")
-    .value
-    .trim();
+    const input = document.getElementById("searchInput");
 
-    const rating =
-    parseFloat(
-        document.getElementById("ratingInput").value
-    );
+    if(!input) return;
 
-    const container =
-    document.getElementById("productContainer");
+    const id = parseInt(input.value);
 
-    if(!container)
-        return;
+    const container = document.getElementById("productContainer");
 
     container.innerHTML = "";
 
-    //-----------------------------------
+    const node = tree.searchProduct(id);
 
-    if(category===""){
+    if(node === null){
 
-        alert("Enter Category");
-
+        container.innerHTML = "<h2>No Product Found</h2>";
         return;
-
     }
 
-    //-----------------------------------
+    const product = node.data;
 
-    const result =
-    tree.searchProducts(
-
-        category,
-
-        isNaN(rating) ? 0 : rating
-
-    );
-
-    //-----------------------------------
-
-    if(result.length===0){
-
-        container.innerHTML=
-
-        "<h2>No Product Found</h2>";
-
-        return;
-
-    }
-
-    //-----------------------------------
-
-    result.forEach(product=>{
-
-        container.innerHTML+=`
-
+    container.innerHTML = `
         <div class="product-card">
 
             <h2>${product.name}</h2>
 
-            <p><strong>ID :</strong> ${product.id}</p>
+            <p>ID : ${product.id}</p>
 
-            <p><strong>Category :</strong> ${product.category}</p>
+            <p>Category : ${product.category}</p>
 
             <p>⭐ ${product.rating}</p>
 
             <button
-            class="buyBtn"
-            onclick="buyProduct(${product.id})">
+                class="buyBtn"
+                onclick="buyProduct(${product.id})">
 
-            Buy Product
+                Buy Product
 
             </button>
 
         </div>
-
-        `;
-
-    });
+    `;
 
 }
 function addNewProduct(){
@@ -1257,6 +1217,77 @@ container.innerHTML+=`
 `;
 
 });
+
+}
+
+function filterProducts(){
+
+    const category =
+        document.getElementById("categoryFilter").value;
+
+    const rating =
+        parseFloat(
+            document.getElementById("ratingFilter").value
+        );
+
+    const container =
+        document.getElementById("productContainer");
+
+    container.innerHTML = "";
+
+    const filtered = products.filter(product => {
+
+        const categoryMatch =
+
+            category === "" ||
+
+            product.category === category;
+
+        const ratingMatch =
+
+            product.rating >= rating;
+
+        return categoryMatch && ratingMatch;
+
+    });
+
+    if(filtered.length === 0){
+
+        container.innerHTML =
+
+        "<h2>No Product Found</h2>";
+
+        return;
+
+    }
+
+    filtered.forEach(product => {
+
+        container.innerHTML += `
+
+        <div class="product-card">
+
+            <h2>${product.name}</h2>
+
+            <p><strong>ID:</strong> ${product.id}</p>
+
+            <p><strong>Category:</strong> ${product.category}</p>
+
+            <p>⭐ ${product.rating}</p>
+
+            <button
+            class="buyBtn"
+            onclick="buyProduct(${product.id})">
+
+                Buy Product
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
 
 }
 //=========================================
