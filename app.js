@@ -11,6 +11,11 @@ let currentUser = null;
 const graph = new Graph();
 const tree = new BST();
 const cache = new LRUCache(3);
+const admin = {
+    username: "admin",
+    password: "admin123"
+};
+let isAdmin = false;
 
 //=========================================
 // DEFAULT PRODUCTS
@@ -19,23 +24,32 @@ const cache = new LRUCache(3);
 const defaultProducts = [
 
 new Product(101,"Laptop","Electronics",4.8),
-
 new Product(102,"Smart Phone","Electronics",4.7),
-
 new Product(103,"Keyboard","Accessories",4.5),
-
 new Product(104,"Headphones","Accessories",4.9),
-
 new Product(105,"Monitor","Electronics",4.6),
-
 new Product(106,"Mouse","Accessories",4.4),
-
 new Product(107,"Tablet","Electronics",4.5),
-
-new Product(108,"Printer","Electronics",4.3)
+new Product(108,"Printer","Electronics",4.3),
+new Product(109,"Smart Watch","Electronics",4.8),
+new Product(110,"Gaming Mouse","Accessories",4.7),
+new Product(111,"Mechanical Keyboard","Accessories",4.9),
+new Product(112,"Webcam","Electronics",4.5),
+new Product(113,"Speaker","Electronics",4.6),
+new Product(114,"Power Bank","Accessories",4.7),
+new Product(115,"USB Hub","Accessories",4.4),
+new Product(116,"External SSD","Electronics",4.9),
+new Product(117,"Router","Electronics",4.5),
+new Product(118,"Microphone","Accessories",4.8),
+new Product(119,"Gaming Chair","Accessories",4.6),
+new Product(120,"Graphics Tablet","Electronics",4.7),
+new Product(121,"Wireless Earbuds","Accessories",4.8),
+new Product(122,"Laptop Stand","Accessories",4.5),
+new Product(123,"Projector","Electronics",4.6),
+new Product(124,"Smart TV","Electronics",4.9),
+new Product(125,"HDMI Cable","Accessories",4.3)
 
 ];
-
 //=========================================
 // SAVE FUNCTIONS
 //=========================================
@@ -111,6 +125,11 @@ JSON.stringify(currentUser)
 
 );
 
+localStorage.setItem(
+"isAdmin",
+JSON.stringify(isAdmin)
+);
+
 }
 
 //=========================================
@@ -118,40 +137,20 @@ JSON.stringify(currentUser)
 //=========================================
 
 function loadProducts(){
-
-const data=JSON.parse(
-
-localStorage.getItem("products")
-
-);
-
+const data=JSON.parse(localStorage.getItem("products"));
 if(data){
-
 data.forEach(product=>{
-
 products.push(product);
-
 tree.insertProduct(product);
-
 });
-
 }
-
 else{
-
 defaultProducts.forEach(product=>{
-
 products.push(product);
-
 tree.insertProduct(product);
-
 });
-
 saveProducts();
-
-}
-
-}
+}}
 
 //=========================================
 // LOAD USERS
@@ -215,6 +214,13 @@ localStorage.getItem("currentUser")
 
 );
 
+const admin = JSON.parse(
+localStorage.getItem("isAdmin")
+);
+
+if(admin)
+    isAdmin=true;
+
 if(login){
 
 isLoggedIn=true;
@@ -275,9 +281,20 @@ window.location="login.html";
 
 function loginUser(){
 
+
 const username=document.getElementById("loginUsername").value;
 
 const password=document.getElementById("loginPassword").value;
+if(
+    username === admin.username &&
+    password === admin.password
+){
+    isLoggedIn=true;
+    isAdmin=true;
+    saveLogin();
+    window.location = "dashboard.html";
+    return;
+}
 
 const user=users.find(
 
@@ -296,16 +313,17 @@ return;
 }
 
 isLoggedIn=true;
-
+isAdmin=false;
 currentUser=user.id;
 
 saveLogin();
 
 alert("Login Successful");
 
-window.location.href="dashboard.html";
+window.location.href="user-dashboard.html";
 
 }
+
 
 //=========================================
 // LOGOUT
@@ -316,40 +334,40 @@ function logout(){
 isLoggedIn=false;
 
 currentUser=null;
-
+isAdmin=false;
 saveLogin();
-
 window.location="index.html";
 
 }
 
+// console.log("hi",isAdmin);
 //=========================================
 // DASHBOARD
 //=========================================
 
 function loadDashboard(){
 
-const welcome=document.getElementById(
+// const welcome=document.getElementById(
 
-"welcomeUser"
+// "welcomeUser"
 
-);
+// );
 
-if(!welcome) return;
+// if(!welcome) return;
 
-const user=users.find(
+// const user=users.find(
 
-u=>u.id===currentUser
+// u=>u.id===currentUser
 
-);
+// );
 
-if(user){
+// if(user){
 
-welcome.innerHTML=
+// welcome.innerHTML=
 
-"Welcome, "+user.name+" 👋";
+// "Welcome, Umama 👋";
 
-}
+// }
 
 document.getElementById(
 
@@ -385,41 +403,215 @@ cache.cache.size;
 // DISPLAY PRODUCTS
 //=========================================
 
-function displayProducts(){
+function displayProducts(productList = products) {
 
-const container=document.getElementById("productContainer");
+    const container = document.getElementById("productContainer");
 
-if(!container) return;
+    if (!container) return;
 
-container.innerHTML="";
+    container.innerHTML = "";
 
-products.forEach(product=>{
+    if (productList.length === 0) {
 
-container.innerHTML+=`
+        container.innerHTML = `
 
-<div class="product-card">
+        <div class="no-products">
 
-<h2>${product.name}</h2>
+            <i class="fa-solid fa-box-open"></i>
 
-<p><strong>ID:</strong> ${product.id}</p>
+            <h2>No Products Found</h2>
 
-<p><strong>Category:</strong> ${product.category}</p>
+            <p>No products match your search.</p>
 
-<p>⭐ ${product.rating}</p>
+        </div>
 
-<button
-class="buyBtn"
-onclick="buyProduct(${product.id})">
+        `;
 
-Buy Product
+        return;
+    }
 
-</button>
+    productList.forEach(product => {
 
-</div>
+        //----------------------------------
+        // Product Icon
+        //----------------------------------
 
-`;
+        let icon = "fa-box";
 
-});
+        if (product.category.toLowerCase() === "electronics") {
+
+            if (product.name.toLowerCase().includes("laptop"))
+                icon = "fa-laptop";
+
+            else if (product.name.toLowerCase().includes("phone"))
+                icon = "fa-mobile-screen";
+
+            else if (product.name.toLowerCase().includes("monitor"))
+                icon = "fa-desktop";
+
+            else
+                icon = "fa-tv";
+        }
+
+        else {
+
+            if (product.name.toLowerCase().includes("keyboard"))
+                icon = "fa-keyboard";
+
+            else if (product.name.toLowerCase().includes("mouse"))
+                icon = "fa-computer-mouse";
+
+            else if (product.name.toLowerCase().includes("headphone"))
+                icon = "fa-headphones";
+
+            else
+                icon = "fa-plug";
+        }
+
+        //----------------------------------
+        // Description
+        //----------------------------------
+
+        let description = "Premium quality product.";
+
+        if (product.name.toLowerCase().includes("laptop"))
+            description = "High performance laptop for work & study.";
+
+        else if (product.name.toLowerCase().includes("phone"))
+            description = "Latest smartphone with modern features.";
+
+        else if (product.name.toLowerCase().includes("keyboard"))
+            description = "Mechanical keyboard for smooth typing.";
+
+        else if (product.name.toLowerCase().includes("mouse"))
+            description = "Wireless ergonomic mouse.";
+
+        else if (product.name.toLowerCase().includes("headphone"))
+            description = "Noise cancelling headphones.";
+
+        else if (product.name.toLowerCase().includes("monitor"))
+            description = "Crystal clear display monitor.";
+
+        //----------------------------------
+        // Stars
+        //----------------------------------
+
+        let stars = "";
+
+        for (let i = 0; i < Math.floor(product.rating); i++) {
+
+            stars += "⭐";
+
+        }
+
+        //----------------------------------
+        // Button
+        //----------------------------------
+
+        let buttonHTML = "";
+
+        if (isAdmin) {
+
+            buttonHTML = `
+
+            <button
+                class="deleteBtn"
+                onclick="deleteProduct(${product.id})">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Delete
+
+            </button>
+
+            `;
+
+        }
+
+        else {
+
+            buttonHTML = `
+
+            <button
+                class="buyBtn"
+                onclick="buyProduct(${product.id})">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Buy Now
+
+            </button>
+
+            `;
+
+        }
+
+        //----------------------------------
+        // Card
+        //----------------------------------
+
+        container.innerHTML += `
+
+        <div class="product-card">
+
+            <div class="product-icon">
+
+                <i class="fa-solid ${icon}"></i>
+
+            </div>
+
+            <h3>${product.name}</h3>
+
+            <div class="product-rating">
+
+                ${stars} (${product.rating})
+
+            </div>
+
+            <div class="product-category">
+
+                ${product.category}
+
+            </div>
+
+            <p class="product-desc">
+
+                ${description}
+
+            </p>
+
+            ${buttonHTML}
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function deleteProduct(id){
+
+    const index = products.findIndex(p=>p.id===id);
+
+    if(index===-1)
+        return;
+
+    products.splice(index,1);
+
+    saveProducts();
+
+    tree.root=null;
+
+    products.forEach(product=>{
+
+        tree.insertProduct(product);
+
+    });
+
+    displayProducts();
+
+    alert("Product Deleted Successfully");
 
 }
 
@@ -509,41 +701,23 @@ function searchProduct(){
 
     const id = parseInt(input.value);
 
-    const container = document.getElementById("productContainer");
+    if(isNaN(id)){
 
-    container.innerHTML = "";
+        displayProducts();
+        return;
+
+    }
 
     const node = tree.searchProduct(id);
 
-    if(node === null){
+    if(node===null){
 
-        container.innerHTML = "<h2>No Product Found</h2>";
+        displayProducts([]);
         return;
+
     }
 
-    const product = node.data;
-
-    container.innerHTML = `
-        <div class="product-card">
-
-            <h2>${product.name}</h2>
-
-            <p>ID : ${product.id}</p>
-
-            <p>Category : ${product.category}</p>
-
-            <p>⭐ ${product.rating}</p>
-
-            <button
-                class="buyBtn"
-                onclick="buyProduct(${product.id})">
-
-                Buy Product
-
-            </button>
-
-        </div>
-    `;
+    displayProducts([node.data]);
 
 }
 function addNewProduct(){
@@ -969,8 +1143,8 @@ function showCurrentUser(){
     if(user)
 
         heading.innerHTML=
-
-        "Welcome "+user.name+" 👋";
+    '   Welcome Umama  👋'
+        // "Welcome "+user.name+" 👋";
 
 }
 
@@ -1290,6 +1464,169 @@ function filterProducts(){
     });
 
 }
+
+
+
+function updateNavbar(){
+
+    const nav = document.querySelector("nav");
+
+    if(!nav) return;
+
+    if(isAdmin){
+
+        nav.innerHTML = `
+            <a href="dashboard.html">Dashboard</a>
+            <a href="products.html">Products</a>
+            <a href="cache.html">LRU Cache</a>
+            <a href="index.html">Logout</a>
+        `;
+    }
+    else{
+
+        nav.innerHTML = `
+            <a href="user-dashboard.html">Dashboard</a>
+            <a href="products.html">Products</a>
+            <a href="recommendation.html">Recommendation</a>
+            <a href="index.html">Logout</a>
+        `;
+    }
+console.log("hello",isAdmin)
+}
+
+function updateProductPage(){
+
+    const addBtn = document.getElementById("addProductBtn");
+
+    if(!addBtn) return;
+
+    if(isAdmin){
+
+        addBtn.style.display="block";
+
+    }
+    else{
+
+        addBtn.style.display="none";
+
+    }
+
+}
+
+//=========================================
+// USER DASHBOARD
+//=========================================
+
+function updateUserDashboard(){
+
+    //----------------------------------
+    // Welcome User
+    //----------------------------------
+
+    const welcome=document.getElementById("welcomeUser");
+
+    const username=document.getElementById("currentUserName");
+
+    if(!welcome || !username)
+        return;
+
+    const user=users.find(
+        u=>u.id===currentUser
+    );
+
+    if(user){
+
+        welcome.innerHTML=
+        "Welcome, "+user.name+" 👋";
+
+        username.innerHTML=
+        user.name;
+
+    }
+
+    //----------------------------------
+    // Purchased Products
+    //----------------------------------
+
+    const purchases=
+    graph.getProducts(currentUser);
+
+    document.getElementById(
+        "purchaseCount"
+    ).innerHTML=
+    purchases.length;
+
+    //----------------------------------
+    // Recommendation Count
+    //----------------------------------
+
+    const recommendations=
+    cache.get(currentUser);
+
+    document.getElementById(
+        "recommendationCount"
+    ).innerHTML=
+    recommendations ? recommendations.length : 0;
+
+}
+
+//=========================================
+// USER DASHBOARD BUTTONS
+//=========================================
+
+function initializeUserDashboard(){
+
+    const browseBtn=
+    document.getElementById(
+        "browseProductsBtn"
+    );
+
+    if(browseBtn){
+
+        browseBtn.onclick=function(){
+
+            window.location=
+            "products.html";
+
+        };
+
+    }
+
+    //----------------------------------
+
+    const recommendationBtn=
+    document.getElementById(
+        "recommendationBtn"
+    );
+
+    if(recommendationBtn){
+
+        recommendationBtn.onclick=function(){
+
+            window.location=
+            "recommendation.html";
+
+        };
+
+    }
+//----------------------------------
+// Purchase History
+//----------------------------------
+
+const historyBtn =
+document.getElementById("historyBtn");
+
+if(historyBtn){
+
+    historyBtn.onclick=function(){
+
+        window.location=
+        "history.html";
+
+    };
+
+}
+}
 //=========================================
 // INITIAL PAGE LOAD
 //=========================================
@@ -1312,8 +1649,12 @@ window.onload=function(){
     showCurrentUser();
 
     updateDashboard();
-
+    updateNavbar();
+    updateProductPage();
     initializeDashboard();
+     updateUserDashboard();
 
+    initializeUserDashboard();
+    showPurchaseHistory()
 }
 

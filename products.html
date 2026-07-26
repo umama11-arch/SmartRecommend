@@ -20,7 +20,7 @@
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!--================ HEADER ================-->
 
     <header>
 
@@ -34,143 +34,138 @@
 
         <nav>
 
-            <a href="dashboard.html">Dashboard</a>
-
-            <a href="products.html">Products</a>
-
-            <a href="recommendation.html">Recommendations</a>
-
-            <a href="cache.html">LRU Cache</a>
-
-
-            <a href="index.html">Logout</a>
+            <!-- Dynamic Navbar -->
 
         </nav>
 
     </header>
 
-    <!-- ================= PRODUCTS ================= -->
+    <!--================ HERO ================-->
 
-    <section class="products-section">
+    <section class="products-hero">
 
-        <h1>Products</h1>
+        <h1>🛍 Featured Products</h1>
 
         <p>
 
-            Browse, search and manage all available products.
+            Discover the best products specially selected for you.
 
         </p>
 
-        <!-- ================= TOP BAR ================= -->
+    </section>
 
-        <div class="top-bar">
+    <!--================ SEARCH ================-->
 
-            <div class="search-box">
+    <section class="search-section">
 
-                <input
-                    type="number"
-                    id="searchInput"
-                    placeholder="Search Product by ID">
+        <div class="search-bar">
 
-                <button onclick="searchProduct()">
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    Search
-
-                </button>
-
-            </div>
-
-            <button
-                class="openModalBtn"
-                onclick="openModal()">
-
-                <i class="fa-solid fa-plus"></i>
-
-                Add Product
-
-            </button>
-
-        </div>
-
-        <!-- ================= FILTER ================= -->
-
-        <div class="filter-box">
-
-            <select id="categoryFilter">
-
-                <option value="">
-
-                    All Categories
-
-                </option>
-
-                <option value="Electronics">
-
-                    Electronics
-
-                </option>
-
-                <option value="Accessories">
-
-                    Accessories
-
-                </option>
-
-            </select>
-
-            <select id="ratingFilter">
-
-                <option value="0">
-
-                    All Ratings
-
-                </option>
-
-                <option value="4">
-
-                    4.0+
-
-                </option>
-
-                <option value="4.5">
-
-                    4.5+
-
-                </option>
-
-                <option value="4.8">
-
-                    4.8+
-
-                </option>
-
-            </select>
-
-            <button onclick="filterProducts()">
-
-                Apply Filter
-
-            </button>
-
-        </div>
-
-        <!-- ================= PRODUCTS GRID ================= -->
-
-        <div
-            id="productContainer"
-            class="product-container">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by Product ID..."
+                 onkeypress="if(event.key==='Enter') searchProduct()">
 
         </div>
 
     </section>
 
-    <!-- ================= ADD PRODUCT MODAL ================= -->
+    <!--================ MAIN LAYOUT ================-->
+
+    <section class="products-wrapper">
+
+        <!--========== FILTERS ==========-->
+
+        <aside class="filter-panel">
+
+            <h2>
+
+                <i class="fa-solid fa-sliders"></i>
+
+                Filters
+
+            </h2>
+
+            <div class="filter-group">
+
+                <label>Category</label>
+
+                <select id="categoryFilter">
+
+                    <option value="">All Categories</option>
+
+                    <option value="Electronics">
+                        Electronics
+                    </option>
+
+                    <option value="Accessories">
+                        Accessories
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-group">
+
+                <label>Minimum Rating</label>
+
+                <select id="ratingFilter">
+
+                    <option value="0">All Ratings</option>
+
+                    <option value="4">4.0+</option>
+
+                    <option value="4.5">4.5+</option>
+
+                    <option value="4.8">4.8+</option>
+
+                </select>
+
+            </div>
+
+            <button onclick="filterProducts()">
+
+                Apply Filters
+
+            </button>
+
+            <button onclick="displayProducts()"
+                class="resetBtn">
+
+                Reset
+
+            </button>
+
+        </aside>
+
+        <!--========== PRODUCTS ==========-->
+
+        <div class="products-area">
+
+            <div class="products-top">
+
+                <h2>All Products</h2>
+
+            </div>
+
+            <div
+                id="productContainer"
+                class="product-grid">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--================ MODAL ================-->
 
     <div
-        class="modal"
-        id="productModal">
+        id="productModal"
+        class="modal">
 
         <div class="modal-content">
 
@@ -218,25 +213,26 @@
                 </button>
 
             </div>
-
+            
         </div>
-
     </div>
+ <button
+                    id="addProductBtn"
+                    class="addProductBtn"
+                    onclick="openModal()">
 
-    <!-- ================= SCRIPTS ================= -->
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+
+    <!--================ SCRIPTS ================-->
 
     <script src="product.js"></script>
-
     <script src="user.js"></script>
-
     <script src="graph.js"></script>
-
     <script src="bst.js"></script>
-
     <script src="minheap.js"></script>
-
     <script src="LRUcache.js"></script>
-
     <script src="app.js"></script>
 
 </body>
