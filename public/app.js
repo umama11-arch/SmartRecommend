@@ -1,6 +1,11 @@
 //=========================================
 // GLOBAL VARIABLES
 //=========================================
+const cors = require("cors");
+
+app.use(cors({
+    origin: "https://umama11-arch.github.io"
+}));
 const API_URL="https://vercel.com/umama-ishaq-s-projects/smart-recommend/9oDFgahU4gxAkDJVgjnoHWMoBCUm"
 async function testDatabase() {
   try {
