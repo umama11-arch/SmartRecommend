@@ -1,5 +1,10 @@
 import express from "express";
 import pool from "./dbs.js";
+import cors from "./cors";
+
+app.use(cors({
+    origin: "https://umama11-arch.github.io"
+}));
 
 const app = express();
 
