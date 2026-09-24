@@ -64,6 +64,7 @@ rel="stylesheet">
 
 </div>
 <script defer>
+    const API_URL = "https://vercel.com/umama-ishaq-s-projects/smart-recommend/9oDFgahU4gxAkDJVgjnoHWMoBCUm";
     const loginUsername=document.getElementById("loginUsername");
     const loginPassword=document.getElementById("loginPassword");
     const loginBtn=document.getElementById("loginBtn");
@@ -76,7 +77,7 @@ rel="stylesheet">
     
     async function login() {
     try {
-        const res = await fetch("/api/login", {
+        const res = await fetch(`${API_URL}/api/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

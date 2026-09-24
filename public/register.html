@@ -72,7 +72,9 @@ Login
 
 </div>
 <script defer>
-    const registerName = document.getElementById("registerName");
+ 
+const API_URL="https://vercel.com/umama-ishaq-s-projects/smart-recommend/9oDFgahU4gxAkDJVgjnoHWMoBCUm";
+ const registerName = document.getElementById("registerName");
 const registerPassword = document.getElementById("registerPassword");
 const registerBtn = document.getElementById("registerBtn");
 console.log(registerBtn)
@@ -85,7 +87,7 @@ registerBtn.addEventListener("click", (e) => {
 
 async function signup() {
     try {
-        const res = await fetch("/api/signup", {
+        const res = await fetch(`${API_URL}/api/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

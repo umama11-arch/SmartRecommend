@@ -3,7 +3,7 @@
 //=========================================
 async function testDatabase() {
   try {
-    const response = await fetch("/api/test-db");
+    const response = await fetch(`${API_URL}/api/test-db`);
     const data = await response.json();
 
     console.log(data);
@@ -16,7 +16,7 @@ testDatabase();
 let products = [];
 
 async function fetchproducts() {
-    const res = await fetch("/api/fetchproducts");
+    const res = await fetch(`${API_URL}/api/fetchproducts`);
     products= await res.json();
     // products=response.result.rows
 }
@@ -43,7 +43,7 @@ let isAdmin = false;
 async function loadProducts(){
     try {
         
-        const res=await fetch("/api/fetchproducts");
+        const res=await fetch(`${API_URL}/api/fetchproducts`);
         const data=await res.json();
         // const data=await datas.result.rows
         if(data){
@@ -71,7 +71,7 @@ async function loadProducts(){
 // LOAD GRAPH
 //=========================================
 async function loadGraph(){
-    const dataset=await fetch("/api/fetchgraph")
+    const dataset=await fetch(`${API_URL}/api/fetchgraph`)
     const datas=await dataset.text();
     const data=await JSON.parse(datas)
 console.log(data)
@@ -421,7 +421,7 @@ return;
 }
 const userid=user.id
 console.log(userid)
-const purchased=await fetch("/api/buyproducts",{
+const purchased=await fetch(`${API_URL}/api/buyproducts`,{
     method:"Post",
     headers:{
         "Content-Type": "application/json"
@@ -1129,7 +1129,7 @@ if(!container) return;
 
 container.innerHTML="";
 const userid=currentUser.id
-const purchasedproducts=await fetch(`/api/purchases?userid=${userid}`)
+const purchasedproducts=await fetch(`$${API_URL}/api/purchases?userid=${userid}`)
 const purchase=await purchasedproducts.text()
 const purchases=JSON.parse(purchase)
 if(purchases.length===0){
