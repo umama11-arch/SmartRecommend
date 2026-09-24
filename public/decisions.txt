@@ -1,0 +1,13 @@
+mein ny purchases k seperate table kyon choose kia ???
+
+Query easy: “Ali ne kaunse products buy kiye?”
+Reverse query easy: “Product 5 kis kis user ne buy kiya?”
+Indexing possible on user_id / product_id
+Purchase-specific data baad mein add kar sakti ho: purchase_date, quantity, etc.
+Duplicate purchases ko constraints se control kar sakti ho.
+Graph ke liye DB se relationships directly fetch ho jati hain.
+
+
+users = user ki information
+products = product ki information
+purchases = users aur products ke beech relationship
