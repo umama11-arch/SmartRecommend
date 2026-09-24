@@ -1,7 +1,7 @@
 {
   "name": "dsa",
   "version": "1.0.0",
-  "type":"module",
+  "type": "module",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/umama11-arch/SmartRecommend#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "pg": "^8.23.0"
   }

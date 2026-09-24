@@ -1,5 +1,5 @@
 
-import cors from "cors";
+import cors from "./cors";
 
 app.use(cors({
     origin: "https://umama11-arch.github.io"
