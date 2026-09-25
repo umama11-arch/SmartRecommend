@@ -98,7 +98,9 @@ function logout(){
 currentUser=null;
 isAdmin=false;
 window.location.href = "../index.html";
+console.log("hi")
 }
+
 //=========================================
 // DASHBOARD
 //=========================================
