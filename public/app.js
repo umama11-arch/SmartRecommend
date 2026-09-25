@@ -1,7 +1,7 @@
 
 
 
-const API_URL="https://vercel.com/umama-ishaq-s-projects/smart-recommend/9oDFgahU4gxAkDJVgjnoHWMoBCUm"
+const API_URL="https://smart-recommend-five.vercel.app"
 async function testDatabase() {
   try {
     const response = await fetch(`${API_URL}/api/test-db`);
