@@ -1,12 +1,12 @@
 import express from "express";
 import pool from "./dbs.js";
-import cors from "./cors";
+const app = express();
+import cors from "cors";
 
 app.use(cors({
     origin: "https://umama11-arch.github.io"
 }));
 
-const app = express();
 
 app.use(express.json());
 app.use(express.static("public"));
