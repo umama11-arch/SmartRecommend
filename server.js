@@ -95,7 +95,7 @@ app.post("/api/login",async(req,res)=>{
     const {username,password}=req.body;
     
    const result = await pool.query(
-  "SELECT id, name, purchasedproducts, likedproducts FROM users WHERE name = $1 AND password = $2",
+  "SELECT id, name FROM users WHERE name = $1 AND password = $2",
   [username, password]
 );
 
