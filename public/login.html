@@ -93,9 +93,9 @@ console.log(message)
 console.log(message.id)
 if (message !== "Invalid") {
     localStorage.setItem("recentuser", JSON.stringify(message));
-    alert(localStorage.getItem("recentuser"))
-    // window.location.href = "user-dashboard.html";
-    
+    alert("Login Successful")
+    window.location.href = "user-dashboard.html";
+
 } else {
     alert("Invalid username or password");
 }
