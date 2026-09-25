@@ -97,12 +97,8 @@ function logout(){
 
 currentUser=null;
 isAdmin=false;
-saveLogin();
-window.location="index.html";
-
+window.location.href = "../index.html";
 }
-
-// console.log("hi",isAdmin);
 //=========================================
 // DASHBOARD
 //=========================================
