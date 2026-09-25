@@ -4,7 +4,7 @@ const app = express();
 import cors from "cors";
 
 app.use(cors({
-    origin: "https://umama11-arch.github.io"
+    origin: "https://umama11-arch.github.io/SmartRecommend/"
 }));
 
 
