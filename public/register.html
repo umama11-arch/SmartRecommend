@@ -81,7 +81,6 @@ console.log(registerBtn)
 
 registerBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    alert("clicked")
     signup();
 });
 
@@ -93,13 +92,14 @@ async function signup() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                 name: registerName.value,
+                name: registerName.value,
                 password: registerPassword.value
             })
         });
-
-       console.log(res.status);
-console.log(await res.text());
+        
+        console.log(res.status);
+        console.log(await res.text());
+        alert("Registered")
 
     } catch (error) {
         console.log(error);
