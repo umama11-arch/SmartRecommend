@@ -127,6 +127,9 @@
 
     </section>
     <!-- Scripts -->
+<script defer>const count = getPurchaseCount();
+console.log(count)
+document.getElementById("purchaseCount").textContent = count;</script>
 
     <script src="product.js"></script>
     <script src="user.js"></script>
@@ -135,9 +138,6 @@
     <script src="minheap.js"></script>
     <script src="LRUcache.js"></script>
     <script src="app.js"></script>
-<script defer>const count = getPurchaseCount();
-
-document.getElementById("purchaseCount").textContent = count;</script>
 </body>
 
 </html>
