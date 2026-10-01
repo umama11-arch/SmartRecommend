@@ -127,9 +127,6 @@
 
     </section>
     <!-- Scripts -->
-<script defer>const count = getPurchaseCount();
-console.log(count)
-document.getElementById("purchaseCount").textContent = count;</script>
 
     <script src="product.js"></script>
     <script src="user.js"></script>
@@ -137,7 +134,21 @@ document.getElementById("purchaseCount").textContent = count;</script>
     <script src="bst.js"></script>
     <script src="minheap.js"></script>
     <script src="LRUcache.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js">
+    
+    </script>
+
+   <script src="app.js"></script>
+
+<script>
+async function loadCount() {
+    const count = await getPurchaseCount();
+    console.log(count);
+    document.getElementById("purchaseCount").textContent = count;
+}
+
+loadCount();
+</script>
 </body>
 
 </html>
