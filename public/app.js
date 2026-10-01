@@ -1165,7 +1165,17 @@ container.innerHTML+=`
 }
 
 showPurchaseHistory()
+async function getPurchaseCount() {
+    const userid = currentUser.id;
 
+    const response = await fetch(
+        `${API_URL}/api/purchases?userid=${userid}`
+    );
+
+    const purchases = await response.json();
+
+    return purchases.length;
+}
 function filterProducts(){
 
     const category =

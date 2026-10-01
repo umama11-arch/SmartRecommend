@@ -61,7 +61,7 @@
                 <i class="fa-solid fa-cart-shopping"></i>
 
                 <h2 id="purchaseCount">
-                      {showPurchaseHistory}
+                    
                 </h2>
 
                 <p>
@@ -126,7 +126,6 @@
         </div>
 
     </section>
-<script defer> console.log(localStorage.getItem("username"))</script>
     <!-- Scripts -->
 
     <script src="product.js"></script>
@@ -136,7 +135,9 @@
     <script src="minheap.js"></script>
     <script src="LRUcache.js"></script>
     <script src="app.js"></script>
+<script defer>const count = await getPurchaseCount();
 
+document.getElementById("purchaseCount").textContent = count;</script>
 </body>
 
 </html>
