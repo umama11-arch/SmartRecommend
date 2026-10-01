@@ -458,6 +458,10 @@ alert(await purchased.text())
 
 }
 
+async function displaypuurchasedproducts(userID) {
+    const res=await fetch(`/api/displaypurchased`)
+}
+
 console.log([...graph.userToProducts.entries()]);
 console.log([...graph.productToUsers.entries()]);
 //=========================================
@@ -1128,7 +1132,7 @@ if(!container) return;
 
 container.innerHTML="";
 const userid=currentUser.id
-const purchasedproducts=await fetch(`$${API_URL}/api/purchases?userid=${userid}`)
+const purchasedproducts=await fetch(`${API_URL}/api/purchases?userid=${userid}`)
 const purchase=await purchasedproducts.text()
 const purchases=JSON.parse(purchase)
 if(purchases.length===0){
@@ -1159,6 +1163,8 @@ container.innerHTML+=`
 });
 
 }
+
+showPurchaseHistory()
 
 function filterProducts(){
 
